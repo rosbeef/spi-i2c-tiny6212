@@ -160,7 +160,7 @@ static int tiny6212_setup(struct spi_device *spi) {
 	return 0;
 }
 
-static int tiny6212_probe(struct i2c_client *client, const struct i2c_device_id *id) {
+static int tiny6212_probe(struct i2c_client *client) {
 	struct device *dev = &client->dev;
 	struct device_node *np = dev->of_node;
 	struct tiny6212 *hw;
@@ -213,7 +213,7 @@ static struct i2c_driver tiny6212_driver = {
 		.of_match_table = of_match_ptr(tiny6212_of_match),
 	},
 	.id_table = tiny6212_id,
-	.probe = tiny6212_probe,
+	.probe = tiny6212_probe
 };
 
 module_i2c_driver(tiny6212_driver);
